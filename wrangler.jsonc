@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // Assets-only Worker: no `main`, no build step. Cloudflare uploads ./games
+  // and serves it as the site root, which is why every link in the HTML is
+  // absolute (/assets/theme.css, /2048/) rather than relative.
+  "name": "indie-games",
+  "compatibility_date": "2026-07-23",
+  "assets": {
+    "directory": "./games",
+    "not_found_handling": "404-page"
+  }
+}

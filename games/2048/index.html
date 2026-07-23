@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>2048 — Games</title>
+<meta name="description" content="Slide tiles to merge equal numbers. Keyboard, swipe, and screen reader friendly.">
+<link rel="stylesheet" href="/assets/theme.css">
+<link rel="stylesheet" href="./game.css">
+</head>
+<body>
+<main class="page">
+  <a class="back" href="/">&larr; Games</a>
+
+  <h1>2048</h1>
+  <p class="lede">Slide tiles to merge equal numbers.</p>
+
+  <div class="scores">
+    <div class="score">
+      <span class="label">Score</span>
+      <span class="value" id="score">0</span>
+    </div>
+    <div class="score">
+      <span class="label">Best</span>
+      <span class="value" id="best">0</span>
+    </div>
+  </div>
+
+  <div class="board" id="board" tabindex="0" role="group"
+       aria-label="Game board. Use arrow keys to slide tiles.">
+    <div class="overlay" id="overlay" aria-hidden="true">
+      <p id="overlay-text"></p>
+      <small id="overlay-sub"></small>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button type="button" id="new">New game</button>
+    <button type="button" id="undo" disabled>Undo</button>
+  </div>
+
+  <p class="keys">
+    <kbd>&larr;</kbd> <kbd>&darr;</kbd> <kbd>&uarr;</kbd> <kbd>&rarr;</kbd>
+    or <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>
+    &middot; swipe on touch
+    &middot; <kbd>U</kbd> to undo
+    &middot; <kbd>R</kbd> to restart
+  </p>
+
+  <div class="sr-only" aria-live="polite" id="live"></div>
+  <div class="sr-only" id="readout"></div>
+</main>
+
+<script type="module" src="./main.js"></script>
+</body>
+</html>

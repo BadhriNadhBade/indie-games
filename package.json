@@ -1,0 +1,14 @@
+{
+  "name": "indie-games",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Small browser games. Static HTML, CSS, and ES modules.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "4.113.0"
+  }
+}
