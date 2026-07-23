@@ -5,25 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <title>Tic-tac-toe — Games</title>
-<meta name="description" content="Tic-tac-toe. Not built yet.">
+<meta name="description" content="Three in a row against badhri, a solver that plays perfectly. Keyboard and screen reader friendly.">
 <link rel="stylesheet" href="/assets/theme.css">
+<link rel="stylesheet" href="./game.css">
 </head>
 <body>
 <main class="page">
   <a class="back" href="/">&larr; Games</a>
 
   <h1>Tic-tac-toe</h1>
-  <p class="lede">Three in a row. Two players, or one against a solver.</p>
+  <p class="lede">You're <b>X</b>. You're playing <b>badhri</b>, who is <b>O</b>.</p>
 
-  <div class="stub">
-    <p>Not built yet.</p>
+  <div class="tally">
+    <div class="item">
+      <span class="label">Drawn</span>
+      <span class="value" id="drawn">0</span>
+    </div>
+    <div class="item">
+      <span class="label">Lost</span>
+      <span class="value" id="lost">0</span>
+    </div>
+  </div>
+
+  <p class="status" id="status"></p>
+
+  <div class="board" id="board" role="group"
+       aria-label="Tic-tac-toe board. Arrow keys move between squares, Enter places your mark."></div>
+
+  <div class="controls">
+    <button type="button" id="new">New game</button>
   </div>
 
   <p class="keys">
-    Drop the game into <code>/tic-tac-toe/</code>: an <code>engine.js</code> with the rules,
-    a <code>main.js</code> that renders and handles input, and a <code>game.css</code>
-    for board styles. Follow <a href="/2048/">2048</a> for the shape.
+    <b>badhri</b> is the opponent, and it's the engine itself &mdash; the solver in
+    <code>engine.js</code>. It searches every position out to the end of the game
+    before answering, so it cannot be beaten. Forcing a draw is the win here.
+    <br>
+    Arrow keys to move &middot; <kbd>Enter</kbd> to place &middot; <kbd>R</kbd> for a new game
+    &middot; badhri and you take turns opening.
   </p>
+
+  <div class="sr-only" aria-live="polite" id="live"></div>
+  <div class="sr-only" id="readout"></div>
 </main>
+
+<script type="module" src="./main.js"></script>
 </body>
 </html>

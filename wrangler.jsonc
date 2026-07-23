@@ -5,6 +5,13 @@
   // absolute (/assets/theme.css, /2048/) rather than relative.
   "name": "indie-games",
   "compatibility_date": "2026-07-23",
+
+  // Already attached in the dashboard; declared here so production routing
+  // lives in version control instead of only in dashboard state.
+  "routes": [
+    { "pattern": "play.badhrinadh.com", "custom_domain": true }
+  ],
+
   "assets": {
     "directory": "./games",
     "not_found_handling": "404-page"
