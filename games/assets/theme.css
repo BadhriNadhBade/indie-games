@@ -41,7 +41,7 @@ body {
   margin: 0 auto;
 }
 
-.page.wide { max-width: 52rem; }
+.page.wide { max-width: 40rem; }
 
 h1 {
   margin: 0;
@@ -103,16 +103,16 @@ a:focus-visible {
   justify-content: center;
   aspect-ratio: 1 / 1;
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.6rem;
   background: var(--fill);
   border: 1px solid var(--line);
-  border-radius: 16px;
+  border-radius: 14px;
   text-decoration: none;
   text-align: center;
 }
 .games a:focus-visible { outline-offset: 4px; }
 .games .name {
-  font-size: clamp(1rem, 26cqw, 1.75rem);
+  font-size: clamp(0.9rem, 24cqw, 1.4rem);
   line-height: 1.05;
   font-weight: 700;
   letter-spacing: -0.02em;
