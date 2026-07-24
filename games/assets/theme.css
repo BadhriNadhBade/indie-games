@@ -41,6 +41,8 @@ body {
   margin: 0 auto;
 }
 
+.page.wide { max-width: 52rem; }
+
 h1 {
   margin: 0;
   font-size: 1.5rem;
@@ -73,29 +75,53 @@ a:focus-visible {
 }
 .back:hover { color: var(--ink); }
 
-/* Index list */
+/* Index cards */
 
 .games {
   list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: 0.75rem;
   margin: 0;
   padding: 0;
-  border-top: 1px solid var(--line);
 }
-.games li { border-bottom: 1px solid var(--line); }
-.games a,
-.games .row {
+.games li { min-width: 0; }
+.games a {
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 0.9rem 0;
-  min-height: 44px;
+  gap: 1.5rem;
+  height: 100%;
+  min-height: 96px;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
   text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.games a:hover,
+.games a:focus-visible {
+  border-color: var(--ink);
+  transform: translateY(-2px);
+}
+.games a:focus-visible { outline-offset: 4px; }
+.games .name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
 }
 .games a:hover .name { text-decoration: underline; text-underline-offset: 0.2em; }
-.games .row { color: var(--dim); }
-.games .name { font-size: 1rem; }
+.games a:hover .desc { text-decoration: none; }
+.games .desc {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--dim);
+  line-height: 1.4;
+}
 .games .note {
+  align-self: flex-start;
   font-size: 0.6875rem;
   letter-spacing: 0.09em;
   text-transform: uppercase;
