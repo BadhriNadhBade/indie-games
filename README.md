@@ -13,12 +13,17 @@ package.json       pins wrangler; no runtime dependencies
 games/             everything below here is published
 ├── index.html     hub page       ├── assets/theme.css   shared styles
 ├── 404.html       not-found      ├── _headers           response headers
-└── 2048/  tic-tac-toe/  built — ludo/ and chess/ are placeholders
+└── 2048/  tic-tac-toe/  crossword/  chess/   one folder per game
 ```
 
 In tic-tac-toe the opponent is `badhri`, exported from its `engine.js`: a minimax
 search over `apply` that plays every position out to the end, so it can't be
 beaten and a draw is the best result available.
+
+Crossword has no opponent to search against, so its `engine.js` is the puzzles
+themselves — five rows of letters and `#` blocks, plus clues keyed by square
+number. Numbering, the entries, and which two answers cross each square are all
+derived from the grid, so a puzzle never repeats what the grid already says.
 
 - **`games/` is the web root, not a path segment** — `games/2048/` serves at
   `/2048/`. Links in the HTML are absolute (`/assets/theme.css`), so moving the
@@ -63,7 +68,7 @@ export function stuck(state)          // -> boolean
 ```
 
 Copy `games/2048/index.html` as a shell, write `engine.js` first, then `main.js`,
-then flip the entry in `games/index.html` from `Soon` to `Play`.
+then add the game to the list in `games/index.html`.
 
 ## Theme and accessibility
 
