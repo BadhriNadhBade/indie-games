@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Crossword — Games</title>
+<meta name="description" content="Four five-by-five crosswords. Type into the grid, check your answers. Keyboard-first and screen reader friendly.">
+<link rel="stylesheet" href="/assets/theme.css">
+<link rel="stylesheet" href="./game.css">
+</head>
+<body>
+<main class="page">
+  <a class="back" href="/">Games</a>
+
+  <h1>Crossword</h1>
+  <p class="lede">Four small grids. Every square is in an across answer and a down one.</p>
+
+  <div class="tally">
+    <div class="item">
+      <span class="label">Puzzle</span>
+      <span class="value" id="puzzle-no">1/4</span>
+    </div>
+    <div class="item">
+      <span class="label">Filled</span>
+      <span class="value" id="filled">0/0</span>
+    </div>
+    <div class="item">
+      <span class="label">Solved</span>
+      <span class="value" id="solved">0</span>
+    </div>
+  </div>
+
+  <p class="status" id="status"></p>
+
+  <div class="grid" id="grid" role="group"
+       aria-label="Crossword grid. Type a letter into a square. Arrow keys move, space turns between across and down, Enter goes to the next clue."></div>
+
+  <div class="controls">
+    <button type="button" id="next">Next puzzle</button>
+    <button type="button" id="check">Check</button>
+    <button type="button" id="reveal">Reveal</button>
+    <button type="button" id="clear">Clear</button>
+  </div>
+
+  <div class="clues">
+    <div>
+      <h2>Across</h2>
+      <ol id="across"></ol>
+    </div>
+    <div>
+      <h2>Down</h2>
+      <ol id="down"></ol>
+    </div>
+  </div>
+
+  <p class="keys">
+    Type a letter &middot; <kbd>&larr;</kbd> <kbd>&darr;</kbd> <kbd>&uarr;</kbd> <kbd>&rarr;</kbd>
+    to move, or to turn the cursor
+    &middot; <kbd>Space</kbd> to swap across and down
+    &middot; <kbd>Enter</kbd> for the next clue, <kbd>Shift</kbd>&thinsp;<kbd>Enter</kbd> for the last
+    &middot; <kbd>Backspace</kbd> to rub out
+    &middot; tap a square twice to turn it.
+    <br>
+    Your letters are kept per puzzle, so leaving one half-done and coming back is fine.
+  </p>
+
+  <div class="sr-only" aria-live="polite" id="live"></div>
+  <div class="sr-only" id="readout"></div>
+</main>
+
+<script type="module" src="./main.js"></script>
+</body>
+</html>
