@@ -5,25 +5,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <title>Chess — Games</title>
-<meta name="description" content="Chess. Not built yet.">
+<meta name="description" content="Play chess against badhri, a move-searching engine. Unicode pieces, keyboard-first board, screen reader friendly.">
 <link rel="stylesheet" href="/assets/theme.css">
+<link rel="stylesheet" href="./game.css">
 </head>
 <body>
 <main class="page">
   <a class="back" href="/">Games</a>
 
   <h1>Chess</h1>
-  <p class="lede">Standard rules, Unicode pieces, keyboard-first board.</p>
+  <p class="lede">You're <b>White</b>. You're playing against <b>badhri</b>, who is <b>Black</b>.</p>
 
-  <div class="stub">
-    <p>Not built yet.</p>
+  <div class="tally">
+    <div class="item">
+      <span class="label">Won</span>
+      <span class="value" id="won">0</span>
+    </div>
+    <div class="item">
+      <span class="label">Drawn</span>
+      <span class="value" id="drawn">0</span>
+    </div>
+    <div class="item">
+      <span class="label">Lost</span>
+      <span class="value" id="lost">0</span>
+    </div>
+  </div>
+
+  <p class="status" id="status"></p>
+
+  <div class="board-wrap">
+    <div class="board" id="board" tabindex="-1" role="group"
+         aria-label="Chess board. Arrow keys move between squares, Enter selects a piece then places it. You play White."></div>
+    <div class="promo" id="promo-wrap" aria-hidden="true">
+      <p>Promote to</p>
+      <div class="promo-choices" id="promo"></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button type="button" id="new">New game</button>
+    <button type="button" id="undo" disabled>Undo</button>
   </div>
 
   <p class="keys">
-    Drop the game into <code>/chess/</code>: an <code>engine.js</code> with the rules,
-    a <code>main.js</code> that renders and handles input, and a <code>game.css</code>
-    for board styles. Follow <a href="/2048/">2048</a> for the shape.
+    <b>badhri</b> is the opponent &mdash; a move-searching engine in <code>engine.js</code>.
+    <br>
+    Click or arrow to a square &middot; <kbd>Enter</kbd> to select then place
+    &middot; <kbd>Esc</kbd> to deselect &middot; <kbd>U</kbd> to take back
+    &middot; <kbd>R</kbd> for a new game.
   </p>
+
+  <div class="sr-only" aria-live="polite" id="live"></div>
+  <div class="sr-only" id="readout"></div>
 </main>
+
+<script type="module" src="./main.js"></script>
 </body>
 </html>
