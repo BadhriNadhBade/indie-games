@@ -1,0 +1,143 @@
+/* Chess board. Inherits tokens from /assets/theme.css. */
+
+.tally {
+  display: flex;
+  gap: 1.75rem;
+  margin-bottom: 0.75rem;
+  align-items: baseline;
+}
+.tally .item { display: flex; align-items: baseline; gap: 0.5rem; }
+.tally .label {
+  font-size: 0.6875rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.tally .value { font-size: 1.125rem; font-variant-numeric: tabular-nums; }
+
+/* Reserve two lines so the board never shifts as the status changes. */
+.status {
+  margin: 0 0 0.875rem;
+  font-size: 0.875rem;
+  min-height: 3.2em;
+}
+.status b { font-weight: 500; }
+
+.board-wrap {
+  --board: min(92vw, 448px);
+  position: relative;
+  width: var(--board);
+}
+
+.board {
+  width: var(--board);
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  border: 1px solid var(--line);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Overrides the shared button rules — these are grid squares, not buttons. */
+.cell {
+  position: relative;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  color: var(--ink);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.cell:hover { border: 0; }
+.cell.light { background: var(--paper); }
+.cell.dark { background: var(--fill); }
+.cell:focus-visible { outline: 2px solid var(--ink); outline-offset: -4px; z-index: 3; }
+
+.piece {
+  font-size: calc(var(--board) / 10);
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* Coordinate hints in the margins (a-file ranks, rank-1 files). */
+.rank, .file {
+  position: absolute;
+  font-size: 0.5rem;
+  line-height: 1;
+  color: var(--dim);
+  pointer-events: none;
+}
+.rank { top: 2px; left: 3px; }
+.file { bottom: 2px; right: 3px; }
+
+/* Selected square and the checked king both invert. */
+.cell.sel,
+.cell.check { background: var(--ink); color: var(--paper); }
+
+/* Legal destinations: a dot on empty squares, a ring on captures. */
+.cell.move::after {
+  content: "";
+  position: absolute;
+  width: 26%;
+  height: 26%;
+  border-radius: 50%;
+  background: var(--dim);
+  opacity: 0.5;
+}
+.cell.cap::after {
+  content: "";
+  position: absolute;
+  inset: 9%;
+  border: 2px solid var(--dim);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* Last move played. */
+.cell.last::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--dim);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.fresh .piece { animation: drop 150ms cubic-bezier(0.3, 0, 0.2, 1); }
+@keyframes drop { from { opacity: 0; } to { opacity: 1; } }
+
+/* Promotion picker. */
+.promo {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 0.75rem;
+  text-align: center;
+  background: var(--paper);
+  z-index: 5;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 160ms ease;
+}
+.promo.shown { opacity: 0.98; visibility: visible; }
+.promo p { margin: 0; font-size: 0.875rem; color: var(--dim); }
+.promo-choices { display: flex; gap: 0.5rem; }
+.promo-choices button {
+  width: calc(var(--board) / 8);
+  height: calc(var(--board) / 8);
+  display: grid;
+  place-items: center;
+  font-size: calc(var(--board) / 12);
+  min-height: 0;
+}
+
+.controls { display: flex; gap: 0.5rem; margin-top: 0.875rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fresh .piece { animation: none; }
+  .promo { transition: none; }
+}
